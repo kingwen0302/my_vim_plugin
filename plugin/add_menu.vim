@@ -12,6 +12,8 @@ function! s:Add_Misc_Menu(menu_clear)
             amenu <silent> &Misc.-SEP1- <Nop> " 增加分隔符
             amenu <silent> &Misc.转为UTF-8无BOM编码格式(&U) :set fileencoding=utf-8<CR> :echo "Transfer Completed"<CR>
             amenu <silent> &Misc.转为ANSI编码格式(&G) :set fileencoding=gbk<CR><CR> :echo "Transfer Completed"<CR>
+            amenu <silent> &Misc.转为unix编码格式 :set fileformat=unix<CR>
+            amenu <silent> &Misc.转为dos编码格式 :set fileformat=dos<CR>
             amenu <silent> &Misc.去掉^M :%s/\r\+$//e<CR>
             " amenu <silent> &Misc.-SEP2- <Nop> " 增加分隔符
             " amenu <silent> &Misc.建立奇缘项目tags文件 :! ctags -R --languages=-Ant,Asm,Asp,Awk,Basic,BETA,C,C++,C\#,Cobol,DosBatch,Eiffel,Erlang,Flex,Fortran,HTML,Java,JavaScript,Lisp,Lua,Make,MatLab,OCaml,Pascal,Perl,PHP,Python,REXX,Ruby,Scheme,Sh,SLang,SML,SQL,Tcl,Tex,Vera,Verilog,VHDL,Vim,YACC,+Erlang -f E:\qingshi\qiyuan_server\trunk\xge\tags E:\qingshi\qiyuan_server\trunk\xge<CR>
