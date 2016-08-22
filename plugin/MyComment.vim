@@ -26,6 +26,21 @@ function! <SID>SetCommentModule()
     call cursor(3, 4)
 endfunc
 
+function! <SID>SetCommentModule1()
+    call append(0, "\%\%\%-----------------------------------------------")
+    call append(1, "\%\%\% @author zhaoming")
+    call append(2, "\%\%\% @copyright ".strftime("%Y")." ChuangYu, Inc.")
+    call append(3, "\%\%\% @since ".strftime("%Y-%m-%d")."")
+    call append(4, "\%\%\% @doc")
+    call append(5, "\%\%\%     ")
+    call append(6, "\%\%\% @end")
+    call append(7, "\%\%\%-----------------------------------------------")
+    call append(8, "-module(".expand("%:t:r").").")
+    call append(9, "")
+    call append(10, "-export([]).")
+    call cursor(6, 8)
+endfunc
+
 function! <SID>SetCommentFunction()
     call append(line(".")-1, "\%\% ---------------------------------------------------------------------------")
     call append(line(".")-1, "\%\% @doc TODO 函数描述.")
@@ -73,7 +88,7 @@ function! <SID>SetSimpleComment()
 endfunc
 
 
-command! -nargs=0 Cm call <SID>SetCommentModule()
+command! -nargs=0 Cm call <SID>SetCommentModule1()
 command! -nargs=0 Cf call <SID>SetCommentFunction()
 command! -nargs=0 Cs call <SID>SetSimpleComment()
 command! -nargs=0 Ca call <SID>SetCommentFunction1()
