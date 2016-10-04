@@ -133,7 +133,7 @@ endfunc
 " autocmd BufEnter * call s:Add_Font_Menu(1)
 " autocmd BufEnter * call s:Add_Misc_Menu(1)
 " autocmd BufEnter * call s:Add_LeaderF_Menu_1(1)
-autocmd BufEnter * call s:Add_SVN_1(1)
+" autocmd BufEnter * call s:Add_SVN_1(1)
 autocmd BufEnter * call s:Add_Project()
 autocmd BufEnter * call s:Add_Menu(1)
 " autocmd BufEnter * call s:Add_Lookup_Menu(1)
