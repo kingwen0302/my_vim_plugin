@@ -58,7 +58,7 @@ function! s:Add_LeaderF_Menu_1(menu_clear)
 endfunction
 
 function! s:Add_LeaderF_Menu(menu_clear, menu_name, svn_path)
-    for [key, value] in items(a:svn_path)
+    for value in a:svn_path
         exe "amenu <silent> &" . a:menu_name . ".&Leaderf.&". value["name"] . "<TAB>" . value["path"] . " :Leaderf " . value["path"] . "<CR>"
     endfor
 endfunction
@@ -101,10 +101,10 @@ function! s:Add_SVN(menu_clear, menu_name, svn_path)
     if (a:menu_clear)
         " exe "silent! unmenu &" . a:menu_name
         " silent! unmenu! &SVN
-        for [key, value] in items(a:svn_path)
+        for value in a:svn_path
             exe "amenu <silent> &" . a:menu_name . ".&UP\\ 目录.&". value["name"] . "<TAB>". value["path"] . " :SVN update " . value["path"] . "<CR>"
         endfor
-        for [key, value] in items(a:svn_path)
+        for value in a:svn_path
             exe "amenu <silent> &" . a:menu_name . ".&COMMIT\\ 目录.&". value["name"] . "<TAB>". value["path"] . " :SVN commit " . value["path"] . "<CR>"
         endfor
     endif
@@ -121,7 +121,7 @@ function! s:Add_SVN_1(menu_clear)
 endfunction
 
 function! s:Add_Project()
-    for [key, game] in items(g:proj_all)
+    for game in g:proj_all
         call s:Add_LeaderF_Menu(1, game['name'], game['conf'])
         call s:Add_SVN(1, game['name'], game['conf'])
     endfor
