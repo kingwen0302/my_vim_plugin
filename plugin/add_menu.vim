@@ -64,6 +64,22 @@ function! s:Add_LeaderF_Menu(menu_clear, menu_name, svn_path)
 endfunction
 
 
+function! s:Add_Menu(menu_clear)
+    if (a:menu_clear)
+        for top_menu in g:menu_list
+            let key     = top_menu[0]
+            let l_menu  = top_menu[1]
+            exe "silent! unmenu &" . key
+            exe "silent! unmenu! &" . key
+            for pa in l_menu
+                if has(pa["os"]) || pa["os"] == "all"
+                    exe "amenu <silent> &" . key . "." . pa["name"] . pa["view"]. " " . pa["cmd"]
+                endif
+            endfor
+        endfor
+    endif
+endfunction
+
 function! s:Add_Font_Menu(menu_clear)
     if (a:menu_clear)
         silent! unmenu &Font
@@ -114,9 +130,10 @@ endfunction
 function! <SID>CallNull()
 endfunc
 
-autocmd BufEnter * call s:Add_Font_Menu(1)
-autocmd BufEnter * call s:Add_Misc_Menu(1)
-autocmd BufEnter * call s:Add_LeaderF_Menu_1(1)
+" autocmd BufEnter * call s:Add_Font_Menu(1)
+" autocmd BufEnter * call s:Add_Misc_Menu(1)
+" autocmd BufEnter * call s:Add_LeaderF_Menu_1(1)
 autocmd BufEnter * call s:Add_SVN_1(1)
 autocmd BufEnter * call s:Add_Project()
+autocmd BufEnter * call s:Add_Menu(1)
 " autocmd BufEnter * call s:Add_Lookup_Menu(1)
