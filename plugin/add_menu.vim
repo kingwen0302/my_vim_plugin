@@ -52,14 +52,14 @@ endfunction
 function! s:Add_LeaderF_Menu_1(menu_clear)
     if (a:menu_clear)
         for [key, value] in items(g:proj_svn_path)
-            exe "amenu <silent> &Leaderf.&". value["name"] . "<TAB>" . value["path"] . " :Leaderf " . value["path"] . "<CR>"
+            exe "amenu <silent> &" . g:leaderf_or_ctrlp . ".&". value["name"] . "<TAB>" . value["path"] . " :". g:leaderf_or_ctrlp . " " . value["path"] . "<CR>"
         endfor
     endif
 endfunction
 
 function! s:Add_LeaderF_Menu(menu_clear, menu_name, svn_path)
     for value in a:svn_path
-        exe "amenu <silent> &" . a:menu_name . ".&Leaderf.&". value["name"] . "<TAB>" . value["path"] . " :Leaderf " . value["path"] . "<CR>"
+        exe "amenu <silent> &" . a:menu_name . ".&" . g:leaderf_or_ctrlp . ".&". value["name"] . "<TAB>" . value["path"] . " :" . g:leaderf_or_ctrlp . " " . value["path"] . "<CR>"
     endfor
 endfunction
 
